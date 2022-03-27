@@ -22,8 +22,10 @@ class AuthServices {
     return response;
   }
 
-  static Future<http.Response> login(String email, String password) async {
+  static Future<http.Response> login(
+      String level, String email, String password) async {
     Map data = {
+      "level": level,
       "email": email,
       "password": password,
     };

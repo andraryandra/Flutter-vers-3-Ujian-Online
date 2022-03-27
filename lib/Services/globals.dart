@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-const String baseURL = "http://127.0.0.1:8000/api/";
+// const String baseURL = "http://192.168.43.124/api/";
+const String baseURL = "http://localhost:8000/api/";
 //Emulator Localhost
 const Map<String, String> headers = {"content-Type": "application/json"};
 

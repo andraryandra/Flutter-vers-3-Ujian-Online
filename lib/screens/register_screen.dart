@@ -5,8 +5,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_first/Services/auth_services.dart';
 import 'package:flutter_first/Services/globals.dart';
-import 'package:flutter_first/screens/home_screen.dart';
-import 'package:flutter_first/screens/login_screen.dart';
+import 'package:flutter_first/screens/home_siswa_screen.dart';
+import 'package:flutter_first/screens/login_guru_screen.dart';
 
 import '../rounded_button.dart';
 
@@ -36,7 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => const HomeScreen(),
+              builder: (BuildContext context) => const HomeSiswaScreen(),
             ));
       } else {
         errorSnackBar(context, ResponseMap.values.first[0]);
@@ -111,7 +111,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (BuildContext context) => const LoginScreen(),
+                      builder: (BuildContext context) =>
+                          const LoginGuruScreen(),
                     ));
               },
               child: const Text(
