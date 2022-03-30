@@ -22,10 +22,28 @@ class AuthServices {
     return response;
   }
 
-  static Future<http.Response> login(
-      String level, String email, String password) async {
+  static Future<http.Response> loginSiswa(
+      String role, String email, String password) async {
     Map data = {
-      "level": level,
+      "role": role,
+      "email": email,
+      "password": password,
+    };
+    var body = json.encode(data);
+    var url = Uri.parse(baseURL + 'auth/login');
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+    print(response.body);
+    return response;
+  }
+
+  static Future<http.Response> loginGuru(
+      String role, String email, String password) async {
+    Map data = {
+      "role": role,
       "email": email,
       "password": password,
     };

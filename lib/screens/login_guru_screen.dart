@@ -20,16 +20,17 @@ class LoginGuruScreen extends StatefulWidget {
 }
 
 class _LoginGuruScreenState extends State<LoginGuruScreen> {
-  String _level = 'guru';
+  String _role = 'guru';
   String _email = '';
   String _password = '';
 
   loginPressed() async {
-    if (_level.isNotEmpty == _email.isNotEmpty && _password.isNotEmpty) {
+    if (_role.isNotEmpty == _email.isNotEmpty && _password.isNotEmpty) {
       http.Response response =
-          await AuthServices.login(_level, _email, _password);
+          // Harus diubah dengan sama pada auth_services.dart
+          await AuthServices.loginGuru(_role, _email, _password);
       Map responseMap = jsonDecode(response.body);
-      if (_level == "guru") {
+      if (_role == "guru") {
         if (response.statusCode == 200) {
           Navigator.push(
               context,
@@ -40,6 +41,12 @@ class _LoginGuruScreenState extends State<LoginGuruScreen> {
           errorSnackBar(context, responseMap.values.first);
         }
       }
+    }
+    if (_role.isNotEmpty == _email.isNotEmpty && _password.isNotEmpty) {
+      http.Response response =
+          // Harus diubah dengan sama pada auth_services.dart
+          await AuthServices.loginGuru(_role, _email, _password);
+      Map responseMap = jsonDecode(response.body);
     } else {
       errorSnackBar(context, 'enter all required fields');
     }
@@ -142,40 +149,40 @@ class _LoginGuruScreenState extends State<LoginGuruScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 25),
-          Text(
-            "Role:",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 8),
-          TextFormField(
-            obscureText: _isHidePassword,
-            autofocus: false,
-            initialValue: '',
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              ),
-              hintText: "Enter your Role",
-              suffixIcon: GestureDetector(
-                onTap: () {
-                  _togglePasswordVisibility();
-                },
-                child: Icon(
-                  _isHidePassword ? Icons.visibility_off : Icons.visibility,
-                  color: _isHidePassword ? Colors.grey : Colors.blue,
-                ),
-              ),
-              isDense: true,
-            ),
-            onChanged: (value) {
-              _level = value;
-            },
-          ),
+          // SizedBox(height: 25),
+          // Text(
+          //   "Role:",
+          //   style: TextStyle(
+          //     fontSize: 18,
+          //     fontWeight: FontWeight.bold,
+          //   ),
+          // ),
+          // SizedBox(height: 8),
+          // TextFormField(
+          //   obscureText: _isHidePassword,
+          //   autofocus: false,
+          //   initialValue: '',
+          //   keyboardType: TextInputType.text,
+          //   decoration: InputDecoration(
+          //     border: OutlineInputBorder(
+          //       borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          //     ),
+          //     hintText: "Enter your Role",
+          //     suffixIcon: GestureDetector(
+          //       onTap: () {
+          //         _togglePasswordVisibility();
+          //       },
+          //       child: Icon(
+          //         _isHidePassword ? Icons.visibility_off : Icons.visibility,
+          //         color: _isHidePassword ? Colors.grey : Colors.blue,
+          //       ),
+          //     ),
+          //     isDense: true,
+          //   ),
+          //   onChanged: (value) {
+          //     _role = value;
+          //   },
+          // ),
           SizedBox(height: 25),
           Text(
             "NIM:",

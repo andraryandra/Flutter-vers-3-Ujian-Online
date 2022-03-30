@@ -11,6 +11,8 @@ import 'package:http/http.dart' as http;
 import 'home_siswa_screen.dart';
 
 class LoginSiswaScreen extends StatefulWidget {
+  static var routeName;
+
   const LoginSiswaScreen({Key? key}) : super(key: key);
 
   @override
@@ -18,16 +20,17 @@ class LoginSiswaScreen extends StatefulWidget {
 }
 
 class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
-  String _level = 'siswa';
+  String _role = 'siswa';
   String _email = '';
   String _password = '';
 
   loginPressed() async {
-    if (_level.isNotEmpty == _email.isNotEmpty && _password.isNotEmpty) {
+    if (_role.isNotEmpty == _email.isNotEmpty && _password.isNotEmpty) {
       http.Response response =
-          await AuthServices.login(_level, _email, _password);
+          // Harus diubah dengan sama pada auth_services.dart
+          await AuthServices.loginSiswa(_role, _email, _password);
       Map responseMap = jsonDecode(response.body);
-      if (_level == 'siswa') {
+      if (_role == "siswa") {
         if (response.statusCode == 200) {
           Navigator.push(
               context,
@@ -109,7 +112,7 @@ class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 43, 177, 255),
+        backgroundColor: Color.fromARGB(255, 10, 157, 255),
         centerTitle: true,
         elevation: 0,
         title: const Text(
@@ -140,40 +143,40 @@ class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 25),
-          Text(
-            "Role:",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 8),
-          TextFormField(
-            obscureText: _isHidePassword,
-            autofocus: false,
-            initialValue: '',
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              ),
-              hintText: "Enter your Role",
-              suffixIcon: GestureDetector(
-                onTap: () {
-                  _togglePasswordVisibility();
-                },
-                child: Icon(
-                  _isHidePassword ? Icons.visibility_off : Icons.visibility,
-                  color: _isHidePassword ? Colors.grey : Colors.blue,
-                ),
-              ),
-              isDense: true,
-            ),
-            onChanged: (value) {
-              _level = value;
-            },
-          ),
+          // SizedBox(height: 25),
+          // Text(
+          //   "Role:",
+          //   style: TextStyle(
+          //     fontSize: 18,
+          //     fontWeight: FontWeight.bold,
+          //   ),
+          // ),
+          // SizedBox(height: 8),
+          // TextFormField(
+          //   obscureText: _isHidePassword,
+          //   autofocus: false,
+          //   initialValue: '',
+          //   keyboardType: TextInputType.text,
+          //   decoration: InputDecoration(
+          //     border: OutlineInputBorder(
+          //       borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          //     ),
+          //     hintText: "Enter your Role",
+          //     suffixIcon: GestureDetector(
+          //       onTap: () {
+          //         _togglePasswordVisibility();
+          //       },
+          //       child: Icon(
+          //         _isHidePassword ? Icons.visibility_off : Icons.visibility,
+          //         color: _isHidePassword ? Colors.grey : Colors.blue,
+          //       ),
+          //     ),
+          //     isDense: true,
+          //   ),
+          //   onChanged: (value) {
+          //     _role = value;
+          //   },
+          // ),
           SizedBox(height: 25),
           Text(
             "NIM:",
@@ -184,7 +187,7 @@ class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
           ),
           SizedBox(height: 8),
           TextField(
-            keyboardType: TextInputType.phone,
+            keyboardType: TextInputType.text,
             autocorrect: false,
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
