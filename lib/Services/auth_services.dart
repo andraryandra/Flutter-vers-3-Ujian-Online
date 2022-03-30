@@ -23,10 +23,10 @@ class AuthServices {
   }
 
   static Future<http.Response> loginSiswa(
-      String role, String email, String password) async {
+      String role, String username, String password) async {
     Map data = {
       "role": role,
-      "email": email,
+      "username": username,
       "password": password,
     };
     var body = json.encode(data);
@@ -41,10 +41,10 @@ class AuthServices {
   }
 
   static Future<http.Response> loginGuru(
-      String role, String email, String password) async {
+      String role, String username, String password) async {
     Map data = {
       "role": role,
-      "email": email,
+      "username": username,
       "password": password,
     };
     var body = json.encode(data);

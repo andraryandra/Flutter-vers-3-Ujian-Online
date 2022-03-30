@@ -95,16 +95,3 @@ class _TampilanScreenState extends State<TampilanScreen> {
     );
   }
 }
-
-
-//  RoundedButton(
-//               btnText: "Create Account",
-//               onBtnPreseed: () {
-//                 Navigator.push(
-//                     context,
-//                     MaterialPageRoute(
-//                       builder: (BuildContext context) =>
-//                           const LoginGuruScreen(),
-//                     ));
-//               },
-//             ),

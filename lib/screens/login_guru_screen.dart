@@ -21,14 +21,14 @@ class LoginGuruScreen extends StatefulWidget {
 
 class _LoginGuruScreenState extends State<LoginGuruScreen> {
   String _role = 'guru';
-  String _email = '';
+  String _username = '';
   String _password = '';
 
   loginPressed() async {
-    if (_role.isNotEmpty == _email.isNotEmpty && _password.isNotEmpty) {
+    if (_role.isNotEmpty == _username.isNotEmpty && _password.isNotEmpty) {
       http.Response response =
           // Harus diubah dengan sama pada auth_services.dart
-          await AuthServices.loginGuru(_role, _email, _password);
+          await AuthServices.loginGuru(_role, _username, _password);
       Map responseMap = jsonDecode(response.body);
       if (_role == "guru") {
         if (response.statusCode == 200) {
@@ -41,12 +41,6 @@ class _LoginGuruScreenState extends State<LoginGuruScreen> {
           errorSnackBar(context, responseMap.values.first);
         }
       }
-    }
-    if (_role.isNotEmpty == _email.isNotEmpty && _password.isNotEmpty) {
-      http.Response response =
-          // Harus diubah dengan sama pada auth_services.dart
-          await AuthServices.loginGuru(_role, _email, _password);
-      Map responseMap = jsonDecode(response.body);
     } else {
       errorSnackBar(context, 'enter all required fields');
     }
@@ -200,7 +194,7 @@ class _LoginGuruScreenState extends State<LoginGuruScreen> {
               hintText: "Enter your Nim",
             ),
             onChanged: (value) {
-              _email = value;
+              _username = value;
             },
           ),
           SizedBox(height: 25),

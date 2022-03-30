@@ -21,14 +21,14 @@ class LoginSiswaScreen extends StatefulWidget {
 
 class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
   String _role = 'siswa';
-  String _email = '';
+  String _username = '';
   String _password = '';
 
   loginPressed() async {
-    if (_role.isNotEmpty == _email.isNotEmpty && _password.isNotEmpty) {
+    if (_role.isNotEmpty == _username.isNotEmpty && _password.isNotEmpty) {
       http.Response response =
           // Harus diubah dengan sama pada auth_services.dart
-          await AuthServices.loginSiswa(_role, _email, _password);
+          await AuthServices.loginSiswa(_role, _username, _password);
       Map responseMap = jsonDecode(response.body);
       if (_role == "siswa") {
         if (response.statusCode == 200) {
@@ -194,7 +194,7 @@ class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
               hintText: "Enter your Nim",
             ),
             onChanged: (value) {
-              _email = value;
+              _username = value;
             },
           ),
           SizedBox(height: 25),
