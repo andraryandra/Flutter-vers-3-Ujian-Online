@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_first/screens/intro/tampilan_awal.dart';
 import 'dart:async';
 import 'package:flutter_first/screens/intro/tampilan_awal.dart';
-import 'package:flutter_first/screens/login_guru_screen.dart';
-import 'package:flutter_first/screens/register_screen.dart';
 import 'dart:ui';
 
 import 'package:drop_shadow_image/drop_shadow_image.dart';

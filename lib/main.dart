@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_first/screens/intro/tampilan_awal.dart';
-import 'package:flutter_first/screens/login_guru_screen.dart';
-import 'package:flutter_first/screens/register_screen.dart';
+
 import 'package:flutter_first/screens/intro/splashscreen_view.dart';
 
 void main() {

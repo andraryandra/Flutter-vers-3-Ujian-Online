@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_first/Services/auth_services.dart';
 import 'package:flutter_first/Services/globals.dart';
 import 'package:flutter_first/screens/home_siswa_screen.dart';
-import 'package:flutter_first/screens/login_guru_screen.dart';
 import 'package:flutter_first/screens/login_siswa_screen.dart';
 
 import '../../rounded_button.dart';
@@ -54,18 +53,6 @@ class _TampilanScreenState extends State<TampilanScreen> {
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
-          ),
-          SizedBox(height: 25),
-          SizedBox(height: 30),
-          RoundedButtonGuru(
-            btnText: "Login Guru",
-            onBtnPreseed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => const LoginGuruScreen(),
-                  ));
-            },
           ),
           SizedBox(height: 30),
           RoundedButtonSiswa(

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_first/Services/auth_services.dart';
 import 'package:flutter_first/Services/globals.dart';
 import 'package:flutter_first/rounded_button.dart';
-import 'package:flutter_first/screens/home_guru_screen.dart';
 import 'package:flutter_first/screens/home_siswa_screen.dart';
 import 'package:http/http.dart' as http;
 
