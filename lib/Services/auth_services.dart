@@ -21,4 +21,22 @@ class AuthServices {
     print(response.body);
     return response;
   }
+
+  static Future<http.Response> getUserData(
+      String name, String username, String role, String id) async {
+    Map data = {
+      "name": name,
+      "username": username,
+      "role": role,
+      "id": id,
+    };
+    var body = json.encode(data);
+    var url = Uri.parse(baseURL + 'auth/index');
+    http.Response response = await http.get(
+      url,
+      headers: headers,
+    );
+    print(response.body);
+    return response;
+  }
 }

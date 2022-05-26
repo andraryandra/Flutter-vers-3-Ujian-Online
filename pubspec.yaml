@@ -37,6 +37,7 @@ dependencies:
   http: ^0.13.4
   drop_shadow_image: ^0.9.1
   lottie: ^1.2.2
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +60,9 @@ flutter:
   assets:
     - assets/logo/
     - assets/icons/
+    - assets/ic/
+    - assets/picture/
+    - assets/images/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

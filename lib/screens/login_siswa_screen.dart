@@ -5,6 +5,7 @@ import 'package:flutter_first/Services/auth_services.dart';
 import 'package:flutter_first/Services/globals.dart';
 import 'package:flutter_first/rounded_button.dart';
 import 'package:flutter_first/screens/home_siswa_screen.dart';
+import 'package:flutter_first/screens/menu_tampilan/home.dart';
 import 'package:http/http.dart' as http;
 
 import 'home_siswa_screen.dart';
@@ -35,6 +36,7 @@ class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
               context,
               MaterialPageRoute(
                 builder: (BuildContext context) => const HomeSiswaScreen(),
+                // HomeSiswaScreen(),
               ));
         } else {
           errorSnackBar(context, responseMap.values.first);
@@ -54,143 +56,57 @@ class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
   }
 
   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         appBar: AppBar(
-//           backgroundColor: Colors.black,
-//           centerTitle: true,
-//           elevation: 0,
-//           title: const Text(
-//             'Login',
-//             style: TextStyle(
-//               fontSize: 20,
-//               fontWeight: FontWeight.bold,
-//             ),
-//           ),
-//         ),
-//         body: Padding(
-//           padding: const EdgeInsets.symmetric(horizontal: 20),
-//           child: Column(
-//             children: [
-//               const SizedBox(
-//                 height: 20,
-//               ),
-//               TextField(
-//                 decoration: const InputDecoration(
-//                   hintText: 'Enter your email',
-//                 ),
-//                 onChanged: (value) {
-//                   _email = value;
-//                 },
-//               ),
-//               const SizedBox(
-//                 height: 30,
-//               ),
-//               TextField(
-//                 obscureText: true,
-//                 decoration: const InputDecoration(
-//                   hintText: 'Enter your password',
-//                 ),
-//                 onChanged: (value) {
-//                   _password = value;
-//                 },
-//               ),
-//               const SizedBox(
-//                 height: 30,
-//               ),
-//               RoundedButton(
-//                 btnText: 'LOG IN',
-//                 onBtnPreseed: () => loginPressed(),
-//               )
-//             ],
-//           ),
-//         ));
-//   }
-// }
-
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 10, 157, 255),
-        centerTitle: true,
-        elevation: 0,
-        title: const Text(
-          'Login Siswa',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
       body: ListView(
-        padding: EdgeInsets.all(25.0),
+        padding: EdgeInsets.all(20.0),
         children: [
+          SizedBox(height: 25),
+          Text(
+            "E-Test",
+            style: TextStyle(
+              color: Colors.blue.shade400,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            "SMPN 1 Lohbener ",
+            style: TextStyle(
+              color: Color.fromARGB(255, 0, 0, 0),
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           SizedBox(height: 20),
           Container(
             alignment: Alignment.topCenter,
-            height: 200,
+            height: 300,
             child: Image.asset(
-              "assets/logo/login.png",
+              "assets/picture/pana.png",
               fit: BoxFit.contain,
             ),
           ),
           SizedBox(height: 25),
           Text(
-            "Silahkan login dengan NIM dan Password ",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          // SizedBox(height: 25),
-          // Text(
-          //   "Role:",
-          //   style: TextStyle(
-          //     fontSize: 18,
-          //     fontWeight: FontWeight.bold,
-          //   ),
-          // ),
-          // SizedBox(height: 8),
-          // TextFormField(
-          //   obscureText: _isHidePassword,
-          //   autofocus: false,
-          //   initialValue: '',
-          //   keyboardType: TextInputType.text,
-          //   decoration: InputDecoration(
-          //     border: OutlineInputBorder(
-          //       borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          //     ),
-          //     hintText: "Enter your Role",
-          //     suffixIcon: GestureDetector(
-          //       onTap: () {
-          //         _togglePasswordVisibility();
-          //       },
-          //       child: Icon(
-          //         _isHidePassword ? Icons.visibility_off : Icons.visibility,
-          //         color: _isHidePassword ? Colors.grey : Colors.blue,
-          //       ),
-          //     ),
-          //     isDense: true,
-          //   ),
-          //   onChanged: (value) {
-          //     _role = value;
-          //   },
-          // ),
-          SizedBox(height: 25),
-          Text(
-            "NIM:",
+            "Username:",
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           SizedBox(height: 8),
-          TextField(
+          TextFormField(
             keyboardType: TextInputType.text,
             autocorrect: false,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: "Enter your Nim",
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
+              ),
+              filled: true,
+              fillColor: Colors.blue.shade100,
+              hintText: "Username",
             ),
             onChanged: (value) {
               _username = value;
@@ -212,16 +128,21 @@ class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
               ),
               hintText: "Enter your Password",
+              filled: true,
+              fillColor: Colors.blue.shade100,
               suffixIcon: GestureDetector(
                 onTap: () {
                   _togglePasswordVisibility();
                 },
                 child: Icon(
                   _isHidePassword ? Icons.visibility_off : Icons.visibility,
-                  color: _isHidePassword ? Colors.grey : Colors.blue,
+                  color: _isHidePassword
+                      ? Color.fromARGB(255, 63, 63, 63)
+                      : Colors.blue,
                 ),
               ),
               isDense: true,
@@ -231,20 +152,19 @@ class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
             },
           ),
           SizedBox(height: 30),
-          RoundedButtonSiswa(
-            btnText: 'LOG IN',
-            onBtnPreseed: () => loginPressed(),
-          ),
-          Center(
+          ElevatedButton(
+            onPressed: () => loginPressed(),
             child: Text(
-              "@Elearning-Kelompok 5",
+              "MASUK",
               style: TextStyle(
-                color: Color.fromARGB(200, 197, 197, 197),
-                fontSize: 18,
-                fontStyle: FontStyle.italic,
-                height: 3,
-                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 255, 255, 255),
               ),
+            ),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blue,
+              fixedSize: Size(150, 50),
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(10.0)),
             ),
           ),
         ],
