@@ -6,24 +6,24 @@ import 'package:flutter_first/Services/globals.dart';
 import 'package:flutter_first/rounded_button.dart';
 import 'package:flutter_first/screens/home_siswa_screen.dart';
 import 'package:flutter_first/screens/login_admin_screen.dart';
-import 'package:flutter_first/screens/login_guru_screen.dart';
+import 'package:flutter_first/screens/login_siswa_screen.dart';
 import 'package:flutter_first/screens/menu_tampilan/home.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_siswa_screen.dart';
 
-class LoginSiswaScreen extends StatefulWidget {
+class LoginGuruScreen extends StatefulWidget {
   static var routeName;
 
-  const LoginSiswaScreen({Key? key}) : super(key: key);
+  const LoginGuruScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginSiswaScreenState createState() => _LoginSiswaScreenState();
+  _LoginGuruScreenState createState() => _LoginGuruScreenState();
 }
 
-class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
-  String _role = 'siswa';
+class _LoginGuruScreenState extends State<LoginGuruScreen> {
+  String _role = 'guru';
   String _username = '';
   String _password = '';
 
@@ -31,9 +31,9 @@ class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
     if (_role.isNotEmpty == _username.isNotEmpty && _password.isNotEmpty) {
       http.Response response =
           // Harus diubah dengan sama pada auth_services.dart
-          await AuthServices.loginSiswa(_role, _username, _password);
+          await AuthServices.loginAdmin(_role, _username, _password);
       Map responseMap = jsonDecode(response.body);
-      if (_role == "siswa") {
+      if (_role == "guru") {
         if (response.statusCode == 200) {
           SharedPreferences localStorage =
               await SharedPreferences.getInstance();
@@ -67,7 +67,7 @@ class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color.fromARGB(255, 111, 214, 255),
+        backgroundColor: Color.fromARGB(255, 85, 248, 180),
         title: Text(
           "Login Page",
           style: TextStyle(color: Colors.white),
@@ -186,16 +186,12 @@ class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
         ],
       ),
       drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color.fromARGB(255, 95, 243, 186),
               ),
               child: Text('Drawer Header'),
             ),

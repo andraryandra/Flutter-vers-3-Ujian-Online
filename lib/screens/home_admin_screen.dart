@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_first/screens/menu_tampilan/admin/home.dart';
+import 'package:flutter_first/screens/menu_tampilan/admin/index.dart';
 import 'package:flutter_first/screens/menu_tampilan/home.dart';
 import 'package:flutter_first/screens/menu_tampilan/profile.dart';
 
-class HomeSiswaScreen extends StatelessWidget {
-  const HomeSiswaScreen({Key? key}) : super(key: key);
+class HomeBottomAdminScreen extends StatelessWidget {
+  const HomeBottomAdminScreen({Key? key}) : super(key: key);
 
   static const String _title = 'Flutter Code Sample';
 
@@ -12,24 +14,24 @@ class HomeSiswaScreen extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: _title,
-      home: MyStatefulWidget(),
+      home: NavbarBottomAdmin(),
     );
   }
 }
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
+class NavbarBottomAdmin extends StatefulWidget {
+  const NavbarBottomAdmin({Key? key}) : super(key: key);
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<NavbarBottomAdmin> createState() => _NavbarBottomAdminState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _NavbarBottomAdminState extends State<NavbarBottomAdmin> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
+    HomeAdminScreen(),
     // Text(
     //   'Index 0: Home',
     //   style: optionStyle,

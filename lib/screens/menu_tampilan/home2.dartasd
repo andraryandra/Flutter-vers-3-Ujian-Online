@@ -1,41 +1,61 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_first/Services/globals.dart';
+import 'package:flutter_first/screens/login_siswa_screen.dart';
+import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_first/screens/login_siswa_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_first/Services/globals.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  static const String _title = 'Flutter Code Sample';
+
+  static const String name = '';
+  _loadUserData() async {
+    //  final SharedPreferences localStorage = await SharedPreferences.getInstance();
+    final localStorage = await SharedPreferences.getInstance();
+    // var user = jsonDecode(localStorage.getString('user'));
+    var user = localStorage.getString('user');
+
+    if (user != null) {
+      var userData = jsonDecode(user);
+      setState(() {
+        name = userData['name'];
+      });
+    }
+  }
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  // String name = '';
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _loadUserData();
-  // }
-
-  // _loadUserData() async {
-  //   var user;
-
-  //   final localStorage = await SharedPreferences.getInstance();
-  //   user = localStorage.getString('user');
-  //   var userMap = json.decode(user);
-  //   if (userMap != null) {
-  //     setState(() {
-  //       name = userMap['name'];
-  //     });
-  //   }
-  // }
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
 
   @override
   Widget build(BuildContext context) {
+    // getUser();
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Text('Home'),
+    //   ),
+    //   body: FutureBuilder(
+    //     future: getUser(),
+    //     builder: (context, snapshot) {
+    //       if (snapshot.hasData) {
+    //         return ListView.builder(
+    //             itemCount: (snapshot.data as dynamic).length,
+    //             itemBuilder: (context, index) {
+    //               return Text(
+    //                   (snapshot.data as dynamic)['data'][index]['name']);
+    //             });
+    //       } else {
+    //         return Text("Data Error");
+    //       }
+    //     },
+    //   ),
+    // );
+
     return Scaffold(
       backgroundColor: Colors.indigo.shade700,
       appBar: AppBar(
@@ -91,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 10,
                     ),
                     Text(
-                      "Andra Ryanda",
+                      "Muhamad Rafli",
                       style: TextStyle(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
