@@ -6,6 +6,8 @@ import 'dart:ui';
 
 import 'package:drop_shadow_image/drop_shadow_image.dart';
 import 'package:flutter_first/screens/login_siswa_screen.dart';
+import 'package:flutter_first/screens/menu_tampilan/admin/home.dart';
+import 'package:flutter_first/screens/menu_tampilan/admin/index.dart';
 
 class SplashScreenPage extends StatefulWidget {
   @override
@@ -24,7 +26,9 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     return Timer(duration, () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
-          return LoginSiswaScreen();
+          return IndexAdmin();
+          HomeAdminScreen();
+          // LoginSiswaScreen();
         }),
       );
     });

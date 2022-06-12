@@ -16,7 +16,9 @@ class AuthServices {
     var url = Uri.parse(baseURL + 'auth/login');
     http.Response response = await http.post(
       url,
-      headers: _setHeaders(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: body,
     );
     print(response.body);
@@ -34,25 +36,12 @@ class AuthServices {
     var url = Uri.parse(baseURL + 'auth/login');
     http.Response response = await http.post(
       url,
-      headers: _setHeaders(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: body,
     );
     print(response.body);
     return response;
   }
 }
-
-var tokenBarier;
-var token;
-
-_getToken() async {
-  final localStorage = await SharedPreferences.getInstance();
-  tokenBarier = localStorage.getString('token');
-  token = jsonDecode(tokenBarier);
-}
-
-_setHeaders() => {
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer $token',
-    };

@@ -23,31 +23,74 @@ class LoginSiswaScreen extends StatefulWidget {
 }
 
 class _LoginSiswaScreenState extends State<LoginSiswaScreen> {
+  TextEditingController _roleController = TextEditingController();
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   String _role = 'siswa';
   String _username = '';
   String _password = '';
 
-  loginPressed() async {
+  bool isLoggedIn = false;
+
+  @override
+  void initState() {
+    super.initState();
+    autoLogIn();
+  }
+
+  void autoLogIn() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? roleId = prefs.getString('siswa');
+    final String? user = prefs.getString('username');
+    final String? pass = prefs.getString('password');
+    if (user != null && pass != null && roleId != null) {
+      setState(() {
+        _role = roleId;
+        _username = user;
+        _password = pass;
+        isLoggedIn = true;
+      });
+      return;
+    }
+  }
+  //    final SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.setString('role', _role);
+  //   prefs.setString('username', _username);
+  //   prefs.setString('password', _password);
+  //   setState(() {
+  //     _role = _roleController.text;
+  //     _username = _usernameController.text;
+  //     _password = _passwordController.text;
+  //     isLoggedIn = true;
+  //   });
+
+  //   _roleController.clear();
+  //   _usernameController.clear();
+  //   _passwordController.clear();
+
+  Future<Null> loginPressed() async {
     if (_role.isNotEmpty == _username.isNotEmpty && _password.isNotEmpty) {
       http.Response response =
           // Harus diubah dengan sama pada auth_services.dart
           await AuthServices.loginSiswa(_role, _username, _password);
       Map responseMap = jsonDecode(response.body);
-      if (_role == "siswa") {
-        if (response.statusCode == 200) {
-          SharedPreferences localStorage =
-              await SharedPreferences.getInstance();
-          localStorage.setString('token', json.encode(['token']));
-          localStorage.setString('user', json.encode(['user']));
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => const HomeSiswaScreen(),
-                // HomeSiswaScreen(),
-              ));
-        } else {
-          errorSnackBar(context, responseMap.values.first);
-        }
+      if (_role == "siswa" && response.statusCode == 200) {
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('username', _username);
+        prefs.setString('password', _password);
+        setState(() {
+          isLoggedIn = true;
+        });
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => const HomeScreen(),
+              // HomeSiswaScreen(),
+              // HomeSiswaScreen(),
+            ));
+      } else {
+        errorSnackBar(context, responseMap.values.first);
       }
     } else {
       errorSnackBar(context, 'enter all required fields');
