@@ -2,6 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_first/screens/login_siswa_screen.dart';
+import 'package:flutter_first/screens/menu_tampilan/materi_view.dart';
+import 'package:flutter_first/screens/menu_tampilan/profile.dart';
+import 'package:flutter_first/screens/menu_tampilan/table.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_first/Services/globals.dart';
 
@@ -13,67 +16,174 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // String name = '';
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _loadUserData();
-  // }
-
-  // _loadUserData() async {
-  //   var user;
-
-  //   final localStorage = await SharedPreferences.getInstance();
-  //   user = localStorage.getString('user');
-  //   var userMap = json.decode(user);
-  //   if (userMap != null) {
-  //     setState(() {
-  //       name = userMap['name'];
-  //     });
-  //   }
-  // }
+   get child => null;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo.shade700,
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.indigo.shade700,
-        leading: IconButton(
-          onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => const LoginSiswaScreen(),
-              )),
-          icon: Icon(Icons.arrow_back_ios),
-          color: Colors.white,
-        ),
+        backgroundColor: Colors.white,
+        leading: IconButton(onPressed: (){}, icon: Icon(Icons.notifications_on, color: Colors.blue,),),
         title: Text(
-          "My HomePage",
-          style: TextStyle(color: Colors.white),
+          "Portal Ujian", style: TextStyle(fontSize: 18,
+          fontWeight: FontWeight.w500, color: Colors.black),
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.more_horiz),
-            color: Colors.white,
-          ),
+          PopupMenuButton(
+              offset: Offset(0, 45), // SET THE (X,Y) POSITION
+    iconSize: 30,
+    icon: Icon(
+      Icons.more_horiz,// CHOOSE YOUR CUSTOM ICON
+      color: Colors.blue,
+    ),
+              onSelected: (value) {},
+              itemBuilder: (context) {
+                return [
+                  PopupMenuItem(
+                    value: 'Home',
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(children: [
+                           Container(
+                              child: Icon(Icons.account_circle, color: Colors.black45,),
+                            ),
+                            InkWell(
+                              onTap: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProfileScreen()),
+                                );
+                              },
+                              child: Text("Profil",
+                              style: TextStyle(
+                                  color: Colors.black45,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500),),
+                            ),
+                        ]),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 'Home',
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(children: [
+                           Container(
+                              child: Icon(Icons.table_rows, color: Colors.black45,),
+                            ),
+                            InkWell(
+                              onTap: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => TableScreen()),
+                                );
+                              },
+                              child: Text("Table",
+                              style: TextStyle(
+                                  color: Colors.black45,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500),),
+                            ),
+                        ]),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 'Home',
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(children: [
+                           Container(
+                              child: Icon(Icons.logout, color: Colors.black45,),
+                            ),
+                            InkWell(
+                              onTap: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginSiswaScreen()),
+                                );
+                              },
+                              child: Text("Log Out",
+                              style: TextStyle(
+                                  color: Colors.black45,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500),),
+                            ),
+                        ]),
+                      ],
+                    ),
+                  ),
+                ];
+              })
         ],
         centerTitle: true,
       ),
       body: ListView(
+          padding: EdgeInsets.fromLTRB(15, 15, 20, 5),
         children: [
           SizedBox(
+            height: 5,
+          ),
+          Container(
+            child: Text("Selamat Datang!", 
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
+            ),
+          ),
+          Container(
+            child: Text("Good Luck :)", 
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blue),
+            ),
+          ),
+          SizedBox(
             height: 20,
+          ),
+          Container(
+child: TextField(
+   keyboardType: TextInputType.text,
+            // obscureText: true,
+            autocorrect: false,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(40),
+              borderSide: BorderSide.none,
+              ),
+              hintText: "Pencarian",
+               filled: true,
+              fillColor: Color.fromARGB(255, 236, 229, 229),
+            ),
+            
+),
+decoration: BoxDecoration(
+  boxShadow: [
+    BoxShadow(
+      color: Color.fromARGB(95, 86, 86, 86),
+            blurRadius: 25,
+            offset: const Offset(0, 10),
+    )
+  ]
+),
+          ),
+           
+          
+          SizedBox(
+            height: 30,
           ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 25),
             padding: EdgeInsets.all(25),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.blue,
+            
             ),
             child: Stack(
               children: [
@@ -81,8 +191,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Container(
                       child: Image.asset(
-                        "assets/picture/profil.png",
-                        fit: BoxFit.contain,
+                        "assets/pictures/profil.png",
+                        fit: BoxFit.cover,
                       ),
                       width: 70,
                       height: 70,
@@ -91,9 +201,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 10,
                     ),
                     Text(
-                      "Andra Ryanda",
+                      "Muhamad Rafli",
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                          color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 5,
@@ -101,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       "Siswa",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                     SizedBox(
@@ -111,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare pretium placerat ut platea.",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                   ],
@@ -123,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 30,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6),
-                        color: Color(0xffFF317B),
+                        color: Colors.orange,
                       ),
                       child: Center(
                         child: Text(
@@ -145,7 +255,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Text(
                   "Menu Utama",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
@@ -159,19 +269,41 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CardFolder(
-                  image: Image.asset(
-                    "assets/picture/Folder.png",
-                  ),
-                  title: "Materi",
-                  date: "Desember",
-                  color: Colors.white,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MateriView()),
+                    );
+                  },
+                  child: CardFolder(
+                    // image: Image.asset(
+                    //   "assets/pictures/Folder.png",
+                    // ),
+                                        icon: Icon(Icons.tablet_mac_sharp, color: Colors.blue,),
+
+                    title: "Materi",
+                    date: "2 jam yang lalu",
+ color: Colors.white10                ),
                 ),
-                CardFolder(
-                  image: Image.asset("assets/picture/Folder(2).png"),
-                  title: "Tugas",
-                  date: "Desember",
-                  color: Colors.white,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MateriView()),
+                    );
+                  },
+                  child: CardFolder(
+                    // image: Image.asset(
+                    //   "assets/ic/exam (3).png",
+                    //   height: 30,
+                    //   width: 30,
+                    // ),
+                                        icon: Icon(Icons.book_sharp, color: Colors.orange,),
+
+                    title: "UAS",
+                    date: "2 jam yang lalu",
+ color: Color.fromARGB(255, 255, 255, 255),                  ),
                 ),
               ],
             ),
@@ -184,85 +316,49 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CardFolder(
-                  image: Image.asset("assets/picture/Folder(1).png"),
-                  title: "Ujian",
-                  date: "Desember",
-                  color: Colors.white,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MateriView()),
+                    );
+                  },
+                  child: CardFolder(
+                    // image: Image.asset(
+                    //   "assets/ic/test.png",
+                    //   height: 30,
+                    //   width: 30,
+                    // ),
+                                        icon: Icon(Icons.book_rounded, color: Color.fromARGB(255, 76, 144, 175),),
+
+           
+                    title: "UTS",
+                    date: "2 jam yang lalu",
+ color: Color.fromARGB(255, 255, 255, 255),                  ),
                 ),
-                CardFolder(
-                  image: Image.asset("assets/picture/Folder(3).png"),
-                  title: "Nilai",
-                  date: "Desember",
-                  color: Colors.white,
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Tugas Terbaru",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MateriView()),
+                    );
+                  },
+                  child: CardFolder(
+                    // image: Image.asset(
+                    //   "assets/ic/score.png",
+                    //   height: 30,
+                    //   width: 30,
+                    // ),
+                                        icon: Icon(Icons.score_sharp, color: Colors.green,),
+
+                    title: "Nilai",
+                    date: "2 jam yang lalu",
+                    color: Color.fromARGB(255, 255, 255, 255),
                   ),
                 ),
-                Image.asset("assets/picture/Sort.png")
+              
               ],
             ),
-          ),
-          ListTile(
-            leading: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.book_online_rounded),
-              color: Colors.white,
-            ),
-            title: Text(
-              "Matematika",
-              style: TextStyle(color: Colors.white),
-            ),
-            subtitle: Text("Lorem ipsum dolor sit amet",
-                style: TextStyle(color: Colors.white)),
-            trailing:
-                Text("2 jam 5 menit", style: TextStyle(color: Colors.white)),
-          ),
-          ListTile(
-            leading: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.book_online_rounded),
-              color: Colors.white,
-            ),
-            title: Text(
-              "IPA",
-              style: TextStyle(color: Colors.white),
-            ),
-            subtitle: Text(
-              "Lorem ipsum dolor sit amet",
-              style: TextStyle(color: Colors.white),
-            ),
-            trailing:
-                Text("2 jam 5 menit", style: TextStyle(color: Colors.white)),
-          ),
-          ListTile(
-            leading: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.book_online_rounded),
-              color: Colors.white,
-            ),
-            title: Text(
-              "Bahasa Indonesia",
-              style: TextStyle(color: Colors.white),
-            ),
-            subtitle: Text("Lorem ipsum dolor sit amet",
-                style: TextStyle(color: Colors.white)),
-            trailing:
-                Text("2 jam 5 menit", style: TextStyle(color: Colors.white)),
           ),
         ],
       ),
@@ -270,30 +366,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-// void logout() async {
-//   var res = Uri.parse(baseURL + 'auth/logout');
-//   var body = json.decode(res.toString());
-//   if (body['success']) {
-//     SharedPreferences localStorage = await SharedPreferences.getInstance();
-//     localStorage.remove('user');
-//     localStorage.remove('token');
-//     print('true');
-//   }
-// }
-
-// void logout() async {
-//   var url = Uri.parse(baseURL + 'auth/logout');
-//   var request = new http.Request('POST', url);
-//   SharedPreferences localStorage = await SharedPreferences.getInstance();
-//   localStorage.remove('user');
-//   localStorage.remove('token');
-
-//   var response = await request.send();
-//   if (response.statusCode == 200) {
-//     Navigator.push(
-//         context, MaterialPageRoute(builder: (context) => LoginSiswaScreen()));
-//   }
-// }
+UasView() {}
 
 class CardFolder extends StatelessWidget {
   CardFolder({
@@ -301,36 +374,54 @@ class CardFolder extends StatelessWidget {
     required this.title,
     required this.date,
     required this.color,
-    required this.image,
+
+    required this.icon,
+
   }) : super(key: key);
 
   final String title;
   final String date;
   final Color color;
-  final Image image;
+
+      final Icon icon;
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      width: MediaQuery.of(context).size.width * 0.4,
+      padding: EdgeInsets.all(5),
+      width: 150,
       height: 120,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: color.withOpacity(0.3),
+            boxShadow: [
+          //background color of box
+          BoxShadow(
+            color: Color.fromARGB(255, 239, 239, 239),
+            //   soften the shadow
+            spreadRadius: 1.0, //extend the shadow
+            offset: Offset(
+              1.0, // Move to right 10  horizontally
+              1.0,
+               // Move to bottom 10 Vertically
+            ),
+          )
+        ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          image,
+          icon,
           SizedBox(height: 15),
           Text(
             title,
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: color,
+              color: Colors.black,
             ),
           ),
           SizedBox(
@@ -338,9 +429,10 @@ class CardFolder extends StatelessWidget {
           ),
           Text(
             date,
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16,
-              color: color,
+              color: Colors.black,
             ),
           ),
         ],
