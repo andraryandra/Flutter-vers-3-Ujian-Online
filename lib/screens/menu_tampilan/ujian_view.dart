@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_first/screens/menu_tampilan/home.dart';
 
@@ -31,57 +30,52 @@ class _UjianViewState extends State<UjianView> {
         ),
         centerTitle: true,
       ),
-       body: ListView(
-        children: [
-          SizedBox(height: 20,),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 25),
-            padding: EdgeInsets.all(25),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.blue.shade200,
-            ),
-            child: Stack(
-              children: [
-                Column(
-                  children: [
-                    Container(
-                      child: Text(
-                        "assets/pictures/profil.png",
-                     
-                      ),
-                      
-                    ),
-                  ],
-                ),
-              ]
-            ),
+      body: ListView(children: [
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 25),
+          padding: EdgeInsets.all(25),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.blue.shade200,
           ),
-          SizedBox(height: 10,),
-          Container(
-             margin: EdgeInsets.symmetric(horizontal: 25),
-            padding: EdgeInsets.all(25),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.blue.shade200,
-            ),
-            child: Stack(
+          child: Stack(children: [
+            Column(
               children: [
-                Column(
-                  children: [
-                    Container(
-                      child: Text(
-                        "assets/pictures/profil.png",
-                     
-                      ),
-                    ),
-                  ],
+                Container(
+                  child: Text(
+                    "assets/picture/profil.png",
+                  ),
                 ),
-              ]
+              ],
             ),
-          )
-        ]
-       ),
+          ]),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 25),
+          padding: EdgeInsets.all(25),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.blue.shade200,
+          ),
+          child: Stack(children: [
+            Column(
+              children: [
+                Container(
+                  child: Text(
+                    "assets/picture/profil.png",
+                  ),
+                ),
+              ],
+            ),
+          ]),
+        )
+      ]),
     );
   }
 }

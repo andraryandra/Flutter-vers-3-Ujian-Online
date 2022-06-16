@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_first/screens/menu_tampilan/home.dart';
 import 'package:flutter_first/screens/menu_tampilan/test_view.dart';
@@ -13,7 +12,7 @@ class MateriView extends StatefulWidget {
 
 class _MateriViewState extends State<MateriView> {
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF1F1F1),
       appBar: AppBar(
@@ -46,81 +45,120 @@ class _MateriViewState extends State<MateriView> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>TestView()),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TestView()),
                     );
                   },
-              child: CardFolder(
-                  image: Image.asset("assets/pictures/calculating.png", width: 30, height: 30,),
-                  title: "Matematika",
-                  color: Color.fromARGB(255, 153, 150, 0),
+                  child: CardFolder(
+                    image: Image.asset(
+                      "assets/picture/calculating.png",
+                      width: 30,
+                      height: 30,
+                    ),
+                    title: "Matematika",
+                    color: Color.fromARGB(255, 153, 150, 0),
+                  ),
                 ),
-                ),
-                 InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> UjianView()),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => UjianView()),
                     );
                   },
-              child:  CardFolder(
-                  image: Image.asset("assets/pictures/science.png", width: 30, height: 30),
-                  title: "IPA",
-                  color: Color(0xFFAC4040),
+                  child: CardFolder(
+                    image: Image.asset("assets/picture/science.png",
+                        width: 30, height: 30),
+                    title: "IPA",
+                    color: Color(0xFFAC4040),
+                  ),
                 ),
-                 ),
               ],
             ),
           ),
-          SizedBox(height: 20,),
-           Padding(
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CardFolder(
-                  image: Image.asset("assets/pictures/parchment.png", height: 30, width: 30,),
+                  image: Image.asset(
+                    "assets/picture/parchment.png",
+                    height: 30,
+                    width: 30,
+                  ),
                   title: "IPS",
                   color: Color.fromARGB(255, 100, 77, 0),
                 ),
                 CardFolder(
-                  image: Image.asset("assets/pictures/religion.png", height: 30, width: 30,),
+                  image: Image.asset(
+                    "assets/picture/religion.png",
+                    height: 30,
+                    width: 30,
+                  ),
                   title: "Agama",
                   color: Color(0XFF23B0B0),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 20,),
-           Padding(
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CardFolder(
-                  image: Image.asset("assets/pictures/eng.png", height: 30, width: 30,),
+                  image: Image.asset(
+                    "assets/picture/eng.png",
+                    height: 30,
+                    width: 30,
+                  ),
                   title: "Bahasa Inggris",
                   color: Color.fromARGB(255, 109, 2, 91),
                 ),
                 CardFolder(
-                  image: Image.asset("assets/pictures/sports.png", height: 30, width: 30,),
+                  image: Image.asset(
+                    "assets/picture/sports.png",
+                    height: 30,
+                    width: 30,
+                  ),
                   title: "Penjaskes",
                   color: Color.fromARGB(255, 204, 126, 9),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 20,),
-           Padding(
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CardFolder(
-                  image: Image.asset("assets/pictures/book-stack.png", height: 30, width: 30,),
+                  image: Image.asset(
+                    "assets/picture/book-stack.png",
+                    height: 30,
+                    width: 30,
+                  ),
                   title: "PPKN",
                   color: Color.fromARGB(255, 37, 106, 255),
                 ),
                 CardFolder(
-                  image: Image.asset("assets/pictures/paint-palette.png", height: 30, width: 30,),
+                  image: Image.asset(
+                    "assets/picture/paint-palette.png",
+                    height: 30,
+                    width: 30,
+                  ),
                   title: "Seni Budaya",
                   color: Color.fromARGB(255, 30, 0, 78),
                 ),
@@ -161,11 +199,13 @@ class CardFolder extends StatelessWidget {
         children: [
           image,
           SizedBox(height: 15),
-          Text(title, style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: color,
-          ),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: color,
+            ),
           ),
         ],
       ),

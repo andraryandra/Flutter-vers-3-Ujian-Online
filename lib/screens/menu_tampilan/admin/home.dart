@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_first/screens/login_admin_screen.dart';
 import 'package:flutter_first/screens/home_admin_screen.dart';
+import 'package:flutter_first/screens/menu_tampilan/admin/categoryUjian/index.dart';
 import 'package:flutter_first/screens/menu_tampilan/admin/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_first/Services/globals.dart';
@@ -94,7 +95,8 @@ class _HomeAdminScreenState extends State<HomeAdminScreen> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => IndexAdmin()),
+                      MaterialPageRoute(
+                          builder: (context) => CategoryUjianView()),
                     );
                   },
                   child: CardFolder(

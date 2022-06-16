@@ -42,7 +42,7 @@ class _IndexAdminState extends State<IndexAdmin> {
                 itemBuilder: (context, index) {
                   return Container(
                     child: Text(
-                      snapshot.data[index]['name_category'],
+                      snapshot.data![index]['name_category'],
                     ),
                   );
                 });

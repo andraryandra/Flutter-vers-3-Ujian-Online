@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_first/screens/menu_tampilan/materi_view.dart';
 
@@ -11,7 +10,7 @@ class TestView extends StatefulWidget {
 
 class _TestViewState extends State<TestView> {
   @override
- Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF1F1F1),
       appBar: AppBar(
@@ -26,7 +25,6 @@ class _TestViewState extends State<TestView> {
               ),
             ),
           },
-          
           icon: Icon(Icons.arrow_back_ios),
           color: Colors.black,
         ),
@@ -39,12 +37,19 @@ class _TestViewState extends State<TestView> {
       body: ListView(
         children: [
           SizedBox(height: 50),
-           Image.asset("assets/pictures/Lantern-pana.png", width: 370, height: 400,),
-           
-          SizedBox(height: 20), 
+          Image.asset(
+            "assets/picture/paint-palette.png",
+            width: 370,
+            height: 400,
+          ),
+          SizedBox(height: 20),
           Container(
             child: Text(
-              "Maaf soal belum tersedia", textAlign: TextAlign.center, style: TextStyle(fontSize: 15 ,),
+              "Maaf soal belum tersedia",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 15,
+              ),
             ),
           ),
         ],

@@ -38,6 +38,7 @@ dependencies:
   drop_shadow_image: ^0.9.1
   lottie: ^1.2.2
   shared_preferences: ^2.0.15
+  html: ^0.15.0
 
 dev_dependencies:
   flutter_test:

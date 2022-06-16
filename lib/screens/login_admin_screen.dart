@@ -9,6 +9,7 @@ import 'package:flutter_first/screens/home_siswa_screen.dart';
 import 'package:flutter_first/screens/login_guru_screen.dart';
 import 'package:flutter_first/screens/login_siswa_screen.dart';
 import 'package:flutter_first/screens/menu_tampilan/admin/home.dart';
+import 'package:flutter_first/screens/menu_tampilan/home.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,15 +37,10 @@ class _LoginAdminScreenState extends State<LoginAdminScreen> {
       Map responseMap = jsonDecode(response.body);
       if (_role == "admin") {
         if (response.statusCode == 200) {
-          SharedPreferences localStorage =
-              await SharedPreferences.getInstance();
-          localStorage.setString('token', json.encode(['token']));
-          localStorage.setString('user', json.encode(['user']));
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) =>
-                    const HomeBottomAdminScreen(),
+                builder: (BuildContext context) => const HomeScreen(),
                 // HomeSiswaScreen(),
               ));
         } else {

@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_first/screens/menu_tampilan/home.dart';
 
 class TableScreen extends StatefulWidget {
   const TableScreen({Key? key}) : super(key: key);
@@ -10,15 +10,32 @@ class TableScreen extends StatefulWidget {
 
 class _TableScreenState extends State<TableScreen> {
   @override
- Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Jadwal Ujian'),
-            centerTitle: true,
+        appBar: AppBar(
+          title: Text('Jadwal Ujian'),
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(),
+                ),
+              ),
+            },
           ),
-          body: ListView(children: <Widget>[
-            SizedBox(height: 20,),
+        ),
+        body: ListView(
+          children: <Widget>[
+            SizedBox(
+              height: 20,
+            ),
             DataTable(
               columns: [
                 DataColumn(
@@ -33,7 +50,6 @@ class _TableScreenState extends State<TableScreen> {
                     label: Text('Mata Pelajaran',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold))),
-                
               ],
               rows: [
                 DataRow(cells: [
@@ -58,7 +74,9 @@ class _TableScreenState extends State<TableScreen> {
                 ]),
               ],
             ),
-          ])),
+          ],
+        ),
+      ),
     );
   }
 }
